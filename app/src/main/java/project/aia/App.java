@@ -3,12 +3,38 @@
  */
 package project.aia;
 
-public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+
+public class App extends Application {
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage primaryStage) {
+        primaryStage.setTitle("JavaFX Button Example");
+
+        // Membuat button
+        Button button = new Button("Click Me");
+
+        // Menambahkan event handler ketika button di klik
+        button.setOnAction(e -> System.out.println("Button Clicked!"));
+
+        // Membuat layout stack pane
+        StackPane root = new StackPane();
+        root.getChildren().add(button);
+
+        // Membuat scene
+        Scene scene = new Scene(root, 300, 200);
+
+        // Menampilkan scene
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 }
+
