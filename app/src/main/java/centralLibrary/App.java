@@ -3,12 +3,12 @@
  */
 package centralLibrary;
 
+import centralLibrary.scenes.DaftarScene;
 import centralLibrary.utils.MenuUtil;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -17,7 +17,6 @@ import javafx.stage.Stage;
 
 public class App extends Application {
     public Stage stage;
-    private MenuBar menuBar;
 
     public static void main(String[] args) {
         launch(args);
@@ -25,11 +24,6 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Label labelName = new Label();
-        labelName.setText("CENTRAL LIBRARY");
-        menuBar = MenuUtil.menu();
-        VBox vbox = new VBox(10, labelName, menuBar);
-
         Label profil = new Label("PROFIL");
         Text text1 = new Text();
         text1.setText ("Central  Library  adalah tempat  yang  nyaman untuk  mengeksplorasi dunia  literasi.\n" + 
@@ -53,7 +47,8 @@ public class App extends Application {
         Button kunjungKatalog = new Button("Kunjungi Katalog");
 
         daftar.setOnAction(action -> {
-            
+            DaftarScene pindahDaftarScene = new DaftarScene(stage);
+            pindahDaftarScene.daftarScene();
         });
 
         kunjungKatalog.setOnAction(action -> {
@@ -65,12 +60,11 @@ public class App extends Application {
         VBox vboxProfil = new VBox(15, profil, text1, text2, text3, text4, hbox);
 
         BorderPane borderPane = new BorderPane();
-        borderPane.setTop(vbox);
+        borderPane.setTop(MenuUtil.vBoxMenu());
         borderPane.setCenter(vboxProfil);
         
         Scene scene = new Scene(borderPane, 800, 500);
 
-        this.stage = stage;
         stage.setScene(scene);
         stage.show();
     }
