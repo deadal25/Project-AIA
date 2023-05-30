@@ -1,5 +1,6 @@
 package centralLibrary.scenes;
 
+import centralLibrary.utils.DatabaseAnggota;
 import centralLibrary.utils.MenuUtil;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -35,13 +36,12 @@ public class DaftarScene {
         
         Label labelNama = new Label("Nama Lengkap:");
         TextField fieldNama = new TextField();
-
         
         Label labelAlamat = new Label("Alamat:");
         TextField fieldAlamat = new TextField();
         
-        Label labelUsia = new Label("Tanggal Lahir:");
-        TextField fieldUsia = new TextField();
+        Label labelTanggalLahir = new Label("Tanggal Lahir:");
+        TextField fieldTanggalLahir = new TextField();
 
         Label labelTelepon = new Label("Telepon:");
         TextField fieldTelepon = new TextField();
@@ -60,29 +60,47 @@ public class DaftarScene {
             }
         });
         HBox hBoxGender = new HBox(10, pria, wanita);
+
+        Label labelKodeAkses = new Label("Kode Akses: ");
+        TextField fieldKodeAkses = new TextField();
         
         Button buttonSimpan = new Button("Simpan");
         buttonSimpan.setOnAction(action -> {
             String nama = fieldNama.getText();
+            String tanggalLahir = fieldTanggalLahir.getText();
             String alamat = fieldAlamat.getText();
-            String tanggalLahir = fieldUsia.getText();
-            
+            String telepon = fieldTelepon.getText();
+            String gender = (pria.isSelected() ? "Pria" : "Wanita");
+            String kodeAkses = fieldKodeAkses.getText();
+
+            try (DatabaseAnggota databaseAnggota = new DatabaseAnggota("C:/Users/ASUS/Music/JavaFX/Project-AIA/app/src/main/resources/database/db_anggota.db")) {
+                databaseAnggota.tambahAnggota(nama, tanggalLahir, alamat, telepon, gender, kodeAkses);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
             fieldNama.clear();
+            fieldTanggalLahir.clear();
             fieldAlamat.clear();
-            fieldUsia.clear();
+            fieldTelepon.clear();
+            pria.setSelected(false);
+            wanita.setSelected(false);
+            fieldKodeAkses.clear();
         });
         
         gridPane.add(labelNama, 0, 0);
         gridPane.add(fieldNama, 1, 0);
-        gridPane.add(labelAlamat, 0, 1);
-        gridPane.add(fieldAlamat, 1, 1);
-        gridPane.add(labelUsia, 0, 2);
-        gridPane.add(fieldUsia, 1, 2);
+        gridPane.add(labelTanggalLahir, 0, 1);
+        gridPane.add(fieldTanggalLahir, 1, 1);
+        gridPane.add(labelAlamat, 0, 2);
+        gridPane.add(fieldAlamat, 1, 2);
         gridPane.add(labelTelepon, 0, 3);
         gridPane.add(fieldTelepon, 1, 3);
         gridPane.add(labelGender, 0, 4);
         gridPane.add(hBoxGender, 1, 4);
-        gridPane.add(buttonSimpan, 1, 5);
+        gridPane.add(labelKodeAkses, 0, 5);
+        gridPane.add(fieldKodeAkses, 1, 5);
+        gridPane.add(buttonSimpan, 1, 6);
         gridPane.setAlignment(Pos.CENTER);
 
         Rectangle kotak = new Rectangle(400, 300);
