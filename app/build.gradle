@@ -23,6 +23,9 @@ dependencies {
 
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:31.1-jre'
+
+    // Dependesi SQLite JDBC
+    implementation 'org.xerial:sqlite-jdbc:3.36.0'
 }
 
 application {
