@@ -46,6 +46,11 @@ public class BerandaScene {
             pindahDaftarScene.daftarScene();
         });
 
+        kunjungKatalog.setOnAction(action -> {
+            KatalogScene pindahKatalogScene = new KatalogScene(stage);
+            pindahKatalogScene.katalogScene();
+        });
+
         HBox hbox = new HBox(label1, daftar, label2, kunjungKatalog);
 
         VBox vboxProfil = new VBox(15, profil, text1, text2, text3, text4, hbox);
