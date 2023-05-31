@@ -62,7 +62,7 @@ public class KatalogScene {
             VBox vbox2 = new VBox(5,label2,sepatu2ImageView,label10,button2);
             vbox2.setAlignment(Pos.CENTER);
             vbox2.setStyle("-fx-background-color: #dcdcdca5;-fx-padding: 10px 10px;");
-   
+
         Label label5 = new Label("NOVEL RIMURU");
         label5.setStyle("-fx-padding: 5px 25px;-fx-font-size: 15px; -fx-font-family: 'Times New Roman'; -fx-text-fill: BLACK;-fx-background-color: #23c7f0; -fx-border-color: WHITE; -fx-border-width: 1px; -fx-border-radius: 5;");
     
@@ -138,7 +138,7 @@ public class KatalogScene {
             VBox utama = new VBox(10, vboxjudul,hbox1,vboxnovel,hbox2,vbox5);
             // utama.setStyle("-fx-background-color:#DCDCDC;");
             
-            Scene tokoScene = new Scene(utama, 615, 615);
+            Scene tokoScene = new Scene(utama, 900, 700);
             stage.setScene(tokoScene);
         }
     }

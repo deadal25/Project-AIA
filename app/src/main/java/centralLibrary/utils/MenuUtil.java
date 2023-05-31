@@ -1,6 +1,7 @@
 package centralLibrary.utils;
 
 import centralLibrary.scenes.BerandaScene;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
@@ -34,7 +35,9 @@ public class MenuUtil{
 
     public static VBox vBoxMenu() {
         Label labelName = new Label("CENTRAL LIBRARY");
+        labelName.setId("central-library");
         VBox vboxMenu = new VBox(10, labelName, menu());
+        vboxMenu.setAlignment(Pos.CENTER);
         return vboxMenu;
     }
 }

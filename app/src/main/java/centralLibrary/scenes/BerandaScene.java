@@ -1,11 +1,15 @@
 package centralLibrary.scenes;
 
 import centralLibrary.utils.MenuUtil;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -18,27 +22,38 @@ public class BerandaScene {
     }
 
     public void berandaScene() {
-        Label profil = new Label("PROFIL");
-        profil.getStyleClass().add("label-name");
-        Text text1 = new Text();
+
+        ImageView background = new ImageView("/images/bownCloud.jpg");
+        background.setPreserveRatio(true);
+        background.setFitHeight(1080);
+
+        ImageView imageView = new ImageView("/images/LogoCentral.png");
+        imageView.setPreserveRatio(true);
+        imageView.setFitHeight(160);
+
+        Label text1 = new Label();
         text1.setText ("Central  Library  adalah tempat  yang  nyaman untuk  mengeksplorasi dunia  literasi.\n" + 
                         "Kami menjadi  rumah bagi  para pecinta buku dan penggemar literasi. Di Central\n" + 
                         "Library, kami berkomitmen untuk menciptakan  lingkungan yang ramah  dan inspiratif\n" + 
                         "bagi semua orang yang ingin menjelajahi dunia pengetahuan melalui bahan bacaan yang\n" + 
                         "berkualitas.");
-        Text text2 = new Text("Lokasi: Jl. Imajinasi No.01, Kota Bayangan, Negara Cahaya.");
-        Text text3 = new Text();
+        text1.getStyleClass().add("text");
+        Label text2 = new Label("Lokasi: Jl. Imajinasi No.01, Kota Bayangan, Negara Cahaya.");
+        text2.getStyleClass().add("text");
+        Label text3 = new Label();
+        text3.getStyleClass().add("text");
         text3.setText  ("Jam Operasional:\n" +
                         "   - Senin-Jumat: 08:00 - 20:00\n" +
                         "   - Sabtu-Minggu: 10:00 - 18:00");
-        Text text4 = new Text();
+        Label text4 = new Label();
         text4.setText  ("Layanan yang Ditawarkan:\n" +
                         "   - Peminjaman Buku: Anggota dapat meminjam buku dengan mendaftarkan diri sebagai anggota perpustakaan. Batas peminjaman adalah 3 buku selama 2 minggu.\n" +
                         "   - Ruang Baca: Kami menyediakan area nyaman untuk membaca di tempat dengan berbagai fasilitas seperti kursi ergonomis, meja, dan akses Wi-Fi gratis.\n" +
                         "   - Perpustakaan Digital: Anggota perpustakaan dapat mengakses koleksi e-book, audiobook, dan sumber belajar online melalui platform perpustakaan digital kami.");
-        Label label1 = new Label("Bergabung bersama kami di ");
+        text4.getStyleClass().add("text");
+        Label label1 = new Label("Bergabung bersama kami");
         Button daftar = new Button("Daftar Anggota");
-        Label label2 = new Label(",   Atau lihat koleksi kami di ");
+        Label label2 = new Label("Lihat koleksi kami");
         Button kunjungKatalog = new Button("Kunjungi Katalog");
 
         daftar.setOnAction(action -> {
@@ -51,16 +66,25 @@ public class BerandaScene {
             pindahKatalogScene.katalogScene();
         });
 
-        HBox hbox = new HBox(label1, daftar, label2, kunjungKatalog);
+        VBox vBoxAnggota = new VBox(label1,daftar);
+        vBoxAnggota.setAlignment(Pos.CENTER);
+        VBox vBoxKatalog = new VBox(label2,kunjungKatalog);
+        vBoxKatalog.setAlignment(Pos.CENTER);
+        HBox hbox = new HBox(vBoxAnggota,vBoxKatalog);
+        hbox.setSpacing(140);
+        hbox.setAlignment(Pos.CENTER);
 
-        VBox vboxProfil = new VBox(15, profil, text1, text2, text3, text4, hbox);
+        VBox vboxProfil = new VBox(15, imageView, text2, text3, text4, hbox);
+        vboxProfil.setAlignment(Pos.TOP_CENTER);
 
         BorderPane borderPane = new BorderPane();
         borderPane.setTop(MenuUtil.vBoxMenu());
         borderPane.setCenter(vboxProfil);
+
+        StackPane pane = new StackPane(background,borderPane);
         
-        Scene scene = new Scene(borderPane, 800, 500);
-        scene.getStylesheets().add("styles.css");
+        Scene scene = new Scene(pane, 900, 700);
+        scene.getStylesheets().add(getClass().getResource("/styles/style.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }

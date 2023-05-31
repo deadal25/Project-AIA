@@ -1,0 +1,13 @@
+#central-library{
+    -fx-font-family: "Times New Roman";
+    -fx-font-size: 80px;
+}
+
+.text{
+    -fx-padding: 10px;
+    -fx-background-radius: 10px;
+    -fx-background-color: #241b24;
+    -fx-text-fill: white;
+    -fx-font-family: "Times New Roman";
+    -fx-font-size: 15px;
+}

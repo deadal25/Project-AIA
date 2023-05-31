@@ -34,16 +34,16 @@ public class DaftarScene {
         gridPane.setVgap(10);
         gridPane.setHgap(10);
         
-        Label labelNama = new Label("Nama Lengkap:");
+        Label labelNama = new Label("Nama Lengkap: ");
         TextField fieldNama = new TextField();
         
-        Label labelAlamat = new Label("Alamat:");
+        Label labelAlamat = new Label("Alamat: ");
         TextField fieldAlamat = new TextField();
         
-        Label labelTanggalLahir = new Label("Tanggal Lahir:");
+        Label labelTanggalLahir = new Label("Tanggal Lahir: ");
         TextField fieldTanggalLahir = new TextField();
 
-        Label labelTelepon = new Label("Telepon:");
+        Label labelTelepon = new Label("Telepon: ");
         TextField fieldTelepon = new TextField();
 
         Label labelGender = new Label("Jenis Kelamin: ");

@@ -25,6 +25,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         BerandaScene berandaScene =  new BerandaScene(stage);
+        stage.setResizable(false);
         berandaScene.berandaScene();
     }
 }
