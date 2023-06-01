@@ -2,6 +2,7 @@ package centralLibrary.scenes;
 
 import centralLibrary.utils.DatabaseAnggota;
 import centralLibrary.utils.MenuUtil;
+import javafx.beans.binding.Bindings;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -26,14 +27,15 @@ public class DaftarScene {
     }
 
     public void daftarScene() {
-        VBox vBox = MenuUtil.vBoxMenu();
+        VBox vBox1 = MenuUtil.vBoxMenu();
 
         
         GridPane gridPane = new GridPane();
         gridPane.setPadding(new Insets(10));
         gridPane.setVgap(10);
         gridPane.setHgap(10);
-        
+
+        Label labelScene = new Label("DAFTAR ANGGOTA BARU");
         Label labelNama = new Label("Nama Lengkap: ");
         TextField fieldNama = new TextField();
         
@@ -65,6 +67,14 @@ public class DaftarScene {
         TextField fieldKodeAkses = new TextField();
         
         Button buttonSimpan = new Button("Simpan");
+        buttonSimpan.disableProperty().bind(
+                Bindings.isEmpty(fieldNama.textProperty())
+                        .or(Bindings.isEmpty(fieldAlamat.textProperty()))
+                        .or(Bindings.isEmpty(fieldTanggalLahir.textProperty()))
+                        .or(Bindings.isEmpty(fieldTelepon.textProperty()))
+                        .or(Bindings.isEmpty(fieldKodeAkses.textProperty()))
+                        .or(pria.selectedProperty().not().and(wanita.selectedProperty().not()))
+        );
         buttonSimpan.setOnAction(action -> {
             String nama = fieldNama.getText();
             String tanggalLahir = fieldTanggalLahir.getText();
@@ -73,12 +83,13 @@ public class DaftarScene {
             String gender = (pria.isSelected() ? "Pria" : "Wanita");
             String kodeAkses = fieldKodeAkses.getText();
 
-            try (DatabaseAnggota databaseAnggota = new DatabaseAnggota("C:/Users/ASUS/Music/JavaFX/Project-AIA/app/src/main/resources/database/db_anggota.db")) {
+            try (DatabaseAnggota databaseAnggota = new DatabaseAnggota("/database/db_anggota.db")) {
                 databaseAnggota.tambahAnggota(nama, tanggalLahir, alamat, telepon, gender, kodeAkses);
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
+            NotifikasiScene berhasilNotif = new NotifikasiScene(new Stage());
+            berhasilNotif.berhasilDaftar();
             fieldNama.clear();
             fieldTanggalLahir.clear();
             fieldAlamat.clear();
@@ -106,12 +117,13 @@ public class DaftarScene {
         Rectangle kotak = new Rectangle(400, 300);
         kotak.setFill(Color.BLUE);
 
-        StackPane stackpane = new StackPane();
-        stackpane.getChildren().addAll(kotak, gridPane);
-
+        StackPane stackPane = new StackPane();
+        stackPane.getChildren().addAll(kotak, gridPane);
+        VBox vBox2 = new VBox(15, labelScene, stackPane);
+        vBox2.setPadding(new Insets(20, 0, 0, 0));
         BorderPane root = new BorderPane();
-        root.setTop(vBox);
-        root.setCenter(stackpane);
+        root.setTop(vBox1);
+        root.setCenter(vBox2);
         Scene scene = new Scene(root, 800, 500);
 
         stage.setScene(scene);
