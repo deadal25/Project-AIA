@@ -38,23 +38,29 @@ public class BerandaScene {
                         "bagi semua orang yang ingin menjelajahi dunia pengetahuan melalui bahan bacaan yang\n" + 
                         "berkualitas.");
         text1.getStyleClass().add("text");
+
         Label text2 = new Label("Lokasi: Jl. Imajinasi No.01, Kota Bayangan, Negara Cahaya.");
         text2.getStyleClass().add("text");
+
         Label text3 = new Label();
         text3.getStyleClass().add("text");
         text3.setText  ("Jam Operasional:\n" +
-                        "   - Senin-Jumat: 08:00 - 20:00\n" +
-                        "   - Sabtu-Minggu: 10:00 - 18:00");
+                        "   Senin - Jumat: 08:00 - 20:00\n" +
+                        "   Sabtu - Minggu: 10:00 - 18:00");
+
         Label text4 = new Label();
         text4.setText  ("Layanan yang Ditawarkan:\n" +
-                        "   - Peminjaman Buku: Anggota dapat meminjam buku dengan mendaftarkan diri sebagai anggota perpustakaan. Batas peminjaman adalah 3 buku selama 2 minggu.\n" +
-                        "   - Ruang Baca: Kami menyediakan area nyaman untuk membaca di tempat dengan berbagai fasilitas seperti kursi ergonomis, meja, dan akses Wi-Fi gratis.\n" +
-                        "   - Perpustakaan Digital: Anggota perpustakaan dapat mengakses koleksi e-book, audiobook, dan sumber belajar online melalui platform perpustakaan digital kami.");
+                        "   - Peminjaman Buku: Anggota dapat meminjam buku dengan mendaftarkan diri sebagai anggota perpustakaan.\n" +
+                        "   - Ruang Baca: Kami menyediakan area nyaman untuk membaca di tempat dengan berbagai fasilitas lengkap.\n" +
+                        "   - Perpustakaan Digital: Anggota perpustakaan dapat mengakses koleksi e-book melalui platform perpustakaan digital kami.");
         text4.getStyleClass().add("text");
+
         Label label1 = new Label("Bergabung bersama kami");
+        label1.getStyleClass().add("label-one");
         Button daftar = new Button("Daftar Anggota");
         Label label2 = new Label("Lihat koleksi kami");
-        Button kunjungKatalog = new Button("Kunjungi Katalog");
+        label2.getStyleClass().add("label-two");
+        Button kunjungKatalog = new Button("Kunjungi Koleksi");
 
         daftar.setOnAction(action -> {
             DaftarScene pindahDaftarScene = new DaftarScene(stage);

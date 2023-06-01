@@ -1,6 +1,7 @@
 #central-library{
     -fx-font-family: "Times New Roman";
-    -fx-font-size: 80px;
+    -fx-text-fill: white;
+    -fx-font-size:40px;
 }
 
 .text{
@@ -9,5 +10,52 @@
     -fx-background-color: #241b24;
     -fx-text-fill: white;
     -fx-font-family: "Times New Roman";
-    -fx-font-size: 15px;
+    -fx-font-size: 17px;
 }
+
+.menu-bar{
+    -fx-font-size: 2px;
+    -fx-background-color: #422d20;
+}
+
+.text-bar{
+    -fx-text-fill: white;
+}
+
+.label-one{
+    -fx-padding: 10px;
+    -fx-background-radius: 10px;
+    -fx-background-color: #241b24;
+    -fx-text-fill: white;
+    -fx-font-family: "Times New Roman";
+    -fx-font-size: 17px;
+}
+
+.label-two{
+    -fx-padding: 10px;
+    -fx-background-radius: 10px;
+    -fx-background-color: #241b24;
+    -fx-text-fill: white;
+    -fx-font-family: "Times New Roman";
+    -fx-font-size: 17px;
+}
+
+
+
+/* (Styling Katalog) */
+.judul-katalog{
+    -fx-font-family: "Times New Roman";
+    -fx-text-fill: #ffff;
+}
+
+.vbox-judul{
+    -fx-background-color: #241b24;
+}
+
+
+/* .label-satu{
+    -fx-padding: 5px;
+    -fx-font-size: 15px;
+    -fx-font-family: "Time New Roman"
+    -fx-text-fill: white;
+} */

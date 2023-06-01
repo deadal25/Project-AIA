@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -27,6 +28,12 @@ public class DaftarScene {
     }
 
     public void daftarScene() {
+
+        ImageView background = new ImageView("/images/bownCloud.jpg");
+        background.setPreserveRatio(true);
+        background.setFitHeight(1080);
+
+
         VBox vBox1 = MenuUtil.vBoxMenu();
 
         
@@ -115,7 +122,7 @@ public class DaftarScene {
         gridPane.setAlignment(Pos.CENTER);
 
         Rectangle kotak = new Rectangle(400, 300);
-        kotak.setFill(Color.BLUE);
+        kotak.setFill(Color.rgb(139, 69, 19));
 
         StackPane stackPane = new StackPane();
         stackPane.getChildren().addAll(kotak, gridPane);
@@ -124,8 +131,10 @@ public class DaftarScene {
         BorderPane root = new BorderPane();
         root.setTop(vBox1);
         root.setCenter(vBox2);
-        Scene scene = new Scene(root, 800, 500);
 
+        StackPane pane = new StackPane();
+        pane.getChildren().addAll(background, root);
+        Scene scene = new Scene(pane, 900, 700);
         stage.setScene(scene);
         stage.show();
     }

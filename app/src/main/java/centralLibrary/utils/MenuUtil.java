@@ -13,6 +13,7 @@ public class MenuUtil{
 
     public static MenuBar menu() {
         MenuBar menuBar = new MenuBar();
+        menuBar.setId("menu-bar");
 
         Menu menu = new Menu("Menu");
 
@@ -36,7 +37,7 @@ public class MenuUtil{
     public static VBox vBoxMenu() {
         Label labelName = new Label("CENTRAL LIBRARY");
         labelName.setId("central-library");
-        VBox vboxMenu = new VBox(10, labelName, menu());
+        VBox vboxMenu = new VBox(8, labelName, menu());
         vboxMenu.setAlignment(Pos.CENTER);
         return vboxMenu;
     }
