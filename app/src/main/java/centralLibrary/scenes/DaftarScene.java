@@ -1,6 +1,6 @@
 package centralLibrary.scenes;
 
-import centralLibrary.utils.DatabaseAnggota;
+import centralLibrary.utils.DatabaseConfig;
 import centralLibrary.utils.MenuUtil;
 import javafx.beans.binding.Bindings;
 import javafx.geometry.Insets;
@@ -22,6 +22,10 @@ import javafx.stage.Stage;
 
 public class DaftarScene {
     private Stage stage;
+
+    public Stage getStage() {
+        return stage;
+    }
 
     public DaftarScene(Stage stage) {
         this.stage = stage;
@@ -90,11 +94,8 @@ public class DaftarScene {
             String gender = (pria.isSelected() ? "Pria" : "Wanita");
             String kodeAkses = fieldKodeAkses.getText();
 
-            try (DatabaseAnggota databaseAnggota = new DatabaseAnggota("/database/db_anggota.db")) {
-                databaseAnggota.tambahAnggota(nama, tanggalLahir, alamat, telepon, gender, kodeAkses);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            DatabaseConfig.insertData(nama, tanggalLahir, alamat, telepon, gender, kodeAkses);
+
             NotifikasiScene berhasilNotif = new NotifikasiScene(new Stage());
             berhasilNotif.berhasilDaftar();
             fieldNama.clear();
