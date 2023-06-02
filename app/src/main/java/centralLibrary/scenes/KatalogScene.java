@@ -44,13 +44,13 @@ public class KatalogScene {
         novel1ImageView.setPreserveRatio(true);
         Label label11 = new Label("");
         label11.setStyle("-fx-font-size: 10px; -fx-font-family: 'Times New Roman'; -fx-text-fill: BLACK;");
-        Button button1 = new Button("Borrow");
-        button1.setStyle("-fx-padding: 3px 25px;-fx-font-family: 'Cambria';-fx-text-fill:BLACK;-fx-font-size: 10px;-fx-background-color: #f89a0c; -fx-border-color: #FAEBD7; -fx-border-width: 1px; -fx-border-radius: 2;");
-        button1.setOnAction(action -> {
+        Button PinjamHujan = new Button("Pinjam");
+        PinjamHujan.setStyle("-fx-padding: 3px 25px;-fx-font-family: 'Cambria';-fx-text-fill:BLACK;-fx-font-size: 10px;-fx-background-color: #f89a0c; -fx-border-color: #FAEBD7; -fx-border-width: 1px; -fx-border-radius: 2;");
+        PinjamHujan.setOnAction(action -> {
             NotifikasiScene validasiPinjaman = new NotifikasiScene(new Stage());
             validasiPinjaman.berhasilPinjam();
         });
-        VBox vbox1 = new VBox(5,label1,novel1ImageView,label11,button1);
+        VBox vbox1 = new VBox(5,label1,novel1ImageView,label11,PinjamHujan);
         vbox1.setAlignment(Pos.CENTER);
         vbox1.setStyle("-fx-background-color: #dcdcdca5;-fx-padding: 10px 10px;");
 
@@ -61,21 +61,31 @@ public class KatalogScene {
         novel2ImageView.setPreserveRatio(true);   
         Label label10 = new Label("");
         label10.setStyle("-fx-font-size: 10px; -fx-font-family: 'Times New Roman'; -fx-text-fill: BLACK;");
-        Button button2 = new Button("Borrow");
-        button2.setStyle("-fx-padding: 3px 25px;-fx-font-family: 'Cambria';-fx-text-fill:BLACK;-fx-font-size: 10px;-fx-background-color: #f89a0c; -fx-border-color: #FAEBD7; -fx-border-width: 1px; -fx-border-radius: 2;");
-        VBox vbox2 = new VBox(5,label2,novel2ImageView,label10,button2);
+        Button PinjamMidnight = new Button("Pinjam");
+        PinjamMidnight.setStyle("-fx-padding: 3px 25px;-fx-font-family: 'Cambria';-fx-text-fill:BLACK;-fx-font-size: 10px;-fx-background-color: #f89a0c; -fx-border-color: #FAEBD7; -fx-border-width: 1px; -fx-border-radius: 2;");
+        VBox vbox2 = new VBox(5,label2,novel2ImageView,label10,PinjamMidnight);
         vbox2.setAlignment(Pos.CENTER);
         vbox2.setStyle("-fx-background-color: #dcdcdca5;-fx-padding: 10px 10px;");
+
+        PinjamMidnight.setOnAction(action ->{
+            NotifikasiScene validasiPinjaman = new NotifikasiScene(new Stage());
+            validasiPinjaman.berhasilPinjam();
+        });
 
         // Novel Melangkah
         Label label5 = new Label("Melangkah");
         ImageView novel5ImageView = new ImageView(new Image("/images/melangkah.jpg")); 
         novel5ImageView.setFitHeight(150);
         novel5ImageView.setPreserveRatio(true);
-        Button button6 = new Button("PINJAM");
-        button6.setStyle("-fx-padding: 3px 25px;-fx-font-family: 'Cambria';-fx-text-fill:BLACK;-fx-font-size: 10px;-fx-background-color: #f89a0c; -fx-border-color: #FAEBD7; -fx-border-width: 1px; -fx-border-radius: 2;");
+        Button PinjamMelangkah = new Button("PINJAM");
+        PinjamMelangkah.setStyle("-fx-padding: 3px 25px;-fx-font-family: 'Cambria';-fx-text-fill:BLACK;-fx-font-size: 10px;-fx-background-color: #f89a0c; -fx-border-color: #FAEBD7; -fx-border-width: 1px; -fx-border-radius: 2;");
 
-        VBox vbox6 = new VBox(5,label5,novel5ImageView,button6);
+        PinjamMelangkah.setOnAction(action -> {
+            NotifikasiScene validasiPinjaman = new NotifikasiScene(new Stage());
+            validasiPinjaman.berhasilPinjam();
+        });
+
+        VBox vbox6 = new VBox(5,label5,novel5ImageView,PinjamMelangkah);
         vbox6.setAlignment(Pos.CENTER);
         vbox6.setStyle("-fx-background-color: #dcdcdca5;-fx-padding: 10px 10px;");
 
@@ -90,29 +100,46 @@ public class KatalogScene {
         ImageView book3ImageView = new ImageView(new Image("/images/stoik.JPG")); 
         book3ImageView.setFitHeight(150);
         book3ImageView.setPreserveRatio(true);
-        Button button3 = new Button("Borrow");
-        button3.setStyle("-fx-padding: 3px 25px;-fx-font-family: 'Cambria';-fx-text-fill:BLACK;-fx-font-size: 10px;-fx-background-color: #f89a0c; -fx-border-color: #FAEBD7; -fx-border-width: 2px; -fx-border-radius: 2;");
-        VBox vbox3 = new VBox(5,label3,book3ImageView,button3);
+        Button PinjamFilosofi = new Button("Pinjam");
+        PinjamFilosofi.setStyle("-fx-padding: 3px 25px;-fx-font-family: 'Cambria';-fx-text-fill:BLACK;-fx-font-size: 10px;-fx-background-color: #f89a0c; -fx-border-color: #FAEBD7; -fx-border-width: 2px; -fx-border-radius: 2;");
+        
+        PinjamFilosofi.setOnAction(action -> {
+            NotifikasiScene validasiPinjaman = new NotifikasiScene(new Stage());
+            validasiPinjaman.berhasilPinjam();
+        });
+
+        VBox vbox3 = new VBox(5,label3,book3ImageView,PinjamFilosofi);
         vbox3.setAlignment(Pos.CENTER);
         vbox3.setStyle("-fx-background-color: #dcdcdca5;-fx-padding: 10px 10px;");
         Label label4 = new Label("Attomic Habits");
         ImageView sepatu4ImageView = new ImageView(new Image("/images/habits.jpg")); 
         sepatu4ImageView.setFitHeight(150);
         sepatu4ImageView.setPreserveRatio(true);
-        Button button4 = new Button("Borrow");
-        button4.setStyle("-fx-padding: 3px 25px;-fx-font-family: 'Cambria';-fx-text-fill:BLACK;-fx-font-size: 10px;-fx-background-color: #f89a0c; -fx-border-color: #FAEBD7; -fx-border-width: 2px; -fx-border-radius: 2;");
+        Button PinjamAttomicHabits = new Button("Pinjam");
+        PinjamAttomicHabits.setStyle("-fx-padding: 3px 25px;-fx-font-family: 'Cambria';-fx-text-fill:BLACK;-fx-font-size: 10px;-fx-background-color: #f89a0c; -fx-border-color: #FAEBD7; -fx-border-width: 2px; -fx-border-radius: 2;");
 
-        VBox vbox4 = new VBox(5,label4,sepatu4ImageView,button4);
+        PinjamAttomicHabits.setOnAction(action -> {
+            NotifikasiScene validasiPinjaman = new NotifikasiScene(new Stage());
+            validasiPinjaman.berhasilPinjam();
+
+        });
+
+        VBox vbox4 = new VBox(5,label4,sepatu4ImageView,PinjamAttomicHabits);
         vbox4.setAlignment(Pos.CENTER);
         vbox4.setStyle("-fx-background-color: #dcdcdca5;-fx-padding: 10px 10px;");
     
         VBox vbox5 = new VBox();
         vbox5.setAlignment(Pos.CENTER);
 
-        Button button5 = new Button("EXIT");
-        button5.setStyle("-fx-padding: 3px 25px;-fx-font-family: 'Cambria';-fx-text-fill:RED;-fx-font-size: 10px;-fx-background-color: #f89a0c; -fx-border-color: #FAEBD7; -fx-border-width: 2px; -fx-border-radius: 2;");
-        vbox5.getChildren().add(button5);
-        VBox.setMargin(button5, new Insets(0, 10, 0, 0));
+        Button exitButton = new Button("EXIT");
+        exitButton.setStyle("-fx-padding: 3px 25px;-fx-font-family: 'Cambria';-fx-text-fill:RED;-fx-font-size: 10px;-fx-background-color: #f89a0c; -fx-border-color: #FAEBD7; -fx-border-width: 2px; -fx-border-radius: 2;");
+        vbox5.getChildren().add(exitButton);
+        VBox.setMargin(exitButton, new Insets(0, 10, 0, 0));
+        
+        exitButton.setOnAction(action -> {
+            BerandaScene pindahBerandaScene = new BerandaScene(stage);
+            pindahBerandaScene.berandaScene();
+        });
         
         HBox hbox1 = new HBox(15, vbox1,vbox2,vbox6);
         hbox1.setAlignment(Pos.CENTER);
@@ -125,10 +152,10 @@ public class KatalogScene {
 
         StackPane pane = new StackPane();
         pane.getChildren().addAll(background, utama);
-        Scene tokoScene = new Scene(pane, 900, 700);
+        Scene perpustakaan = new Scene(pane, 900, 700);
 
-        tokoScene.getStylesheets().add(getClass().getResource("/styles/style.css").toExternalForm());
-        stage.setScene(tokoScene);
+        perpustakaan.getStylesheets().add(getClass().getResource("/styles/style.css").toExternalForm());
+        stage.setScene(perpustakaan);
         stage.show();
     }
 }
