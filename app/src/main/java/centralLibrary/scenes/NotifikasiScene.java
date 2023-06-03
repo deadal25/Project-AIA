@@ -23,18 +23,18 @@ public class NotifikasiScene {
 
     public void berhasilDaftar() {
         Label label1 = new Label("Anda Telah Terdaftar");
-        label1.setStyle("-fx-padding: 3px 25px;-fx-font-family: 'Times New Roman';-fx-text-fill:WHITE;-fx-font-size: 30px; -fx-border-color: #FAEBD7; -fx-border-width: 2px; -fx-border-radius: 3;");
+        label1.setStyle("-fx-padding: 3px 25px;-fx-font-family: 'Times New Roman';-fx-text-fill:WHITE;-fx-font-size: 20px; -fx-background-color: #241b24;-fx-border-color: #FAEBD7; -fx-border-width: 2px; -fx-border-radius: 3;");
         Label label2 = new Label("Selamat Telah Menjadi Anggota Central Library");
-        label2.setStyle("-fx-padding: 3px 25px;-fx-font-family: 'Times New Roman';-fx-text-fill:WHITE;-fx-font-size: 30px; -fx-border-color: #FAEBD7; -fx-border-width: 2px; -fx-border-radius: 3;");
+        label2.setStyle("-fx-padding: 3px 25px;-fx-font-family: 'Times New Roman';-fx-text-fill:WHITE;-fx-font-size: 20px; -fx-background-color: #241b24;-fx-border-color: #FAEBD7; -fx-border-width: 2px; -fx-border-radius: 3;");
 
         Button closeButton = new Button("OKE");
-        closeButton.setAlignment(Pos.TOP_CENTER);
+        closeButton.setStyle("-fx-padding: 3px 25px;-fx-font-family: 'Times New Roman';-fx-text-fill:WHITE;-fx-font-size: 15px;-fx-background-color: #241b24; -fx-border-color: #FAEBD7; -fx-border-width: 2px; -fx-border-radius: 3;");
         closeButton.setOnAction(action -> {
             stage.close();
         });
 
         VBox vBox = new VBox(10, label1, label2, closeButton);
-        Scene scene = new Scene(vBox, 300, 200);
+        Scene scene = new Scene(vBox, 450, 200);
         stage.setScene(scene);
         stage.setResizable(true);
         stage.show();

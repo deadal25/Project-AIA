@@ -37,7 +37,6 @@ public class DaftarScene {
         background.setPreserveRatio(true);
         background.setFitHeight(1080);
 
-
         VBox vBox1 = MenuUtil.vBoxMenu();
 
         GridPane gridPane = new GridPane();
@@ -45,23 +44,31 @@ public class DaftarScene {
         gridPane.setVgap(10);
         gridPane.setHgap(10);
 
-        Label labelScene = new Label("DAFTAR ANGGOTA BARU");
-        labelScene.setId("label-scene");
+        Label labelScene = new Label("DAFTAR ANGGOTA BARU : ");
+        labelScene.setStyle("-fx-padding: 3px 25px;-fx-font-family: 'Times New Roman';-fx-text-fill:WHITE;-fx-font-size: 18px;-fx-background-color: #241b24; -fx-border-color: #FAEBD7; -fx-border-width: 2px; -fx-border-radius: 3;");
+
         Label labelNama = new Label("Nama Lengkap: ");
+        labelNama.setStyle("-fx-padding: 3px 25px;-fx-font-family: 'Times New Roman';-fx-text-fill:WHITE;-fx-font-size: 16px;");
         TextField fieldNama = new TextField();
         
-        Label labelAlamat = new Label("Alamat: ");
+        Label labelAlamat = new Label("Alamat : ");
+        labelAlamat.setStyle("-fx-padding: 3px 25px;-fx-font-family: 'Times New Roman';-fx-text-fill:WHITE;-fx-font-size: 16px;");
         TextField fieldAlamat = new TextField();
         
-        Label labelTanggalLahir = new Label("Tanggal Lahir: ");
+        Label labelTanggalLahir = new Label("Tanggal Lahir : ");
+        labelTanggalLahir.setStyle("-fx-padding: 3px 25px;-fx-font-family: 'Times New Roman';-fx-text-fill:WHITE;-fx-font-size: 16px;");
         TextField fieldTanggalLahir = new TextField();
 
-        Label labelTelepon = new Label("Telepon: ");
+        Label labelTelepon = new Label("Telepon : ");
+        labelTelepon.setStyle("-fx-padding: 3px 25px;-fx-font-family: 'Times New Roman';-fx-text-fill:WHITE;-fx-font-size: 16px;");
         TextField fieldTelepon = new TextField();
 
-        Label labelGender = new Label("Jenis Kelamin: ");
+        Label labelGender = new Label("Jenis Kelamin : ");
+        labelGender.setStyle("-fx-padding: 3px 25px;-fx-font-family: 'Times New Roman';-fx-text-fill:WHITE;-fx-font-size: 16px;");
         CheckBox pria = new CheckBox("Laki-laki");
+        pria.setStyle("-fx-font-family: 'Times New Roman';-fx-text-fill:WHITE;-fx-text-fill:WHITE;-fx-font-size: 14px");
         CheckBox wanita = new CheckBox("Perempuan");
+        wanita.setStyle("-fx-font-family: 'Times New Roman';-fx-text-fill:WHITE;-fx-text-fill:WHITE;-fx-font-size: 14px");
         pria.setOnAction(action -> {
             if (pria.isSelected()) {
                 wanita.setSelected(false);
@@ -74,10 +81,12 @@ public class DaftarScene {
         });
         HBox hBoxGender = new HBox(10, pria, wanita);
 
-        Label labelKodeAkses = new Label("Kode Akses: ");
+        Label labelKodeAkses = new Label("Kode Akses : ");
+        labelKodeAkses.setStyle("-fx-padding: 3px 25px;-fx-font-family: 'Times New Roman';-fx-text-fill:WHITE;-fx-font-size: 16px; ");
         TextField fieldKodeAkses = new TextField();
         
         Button buttonSimpan = new Button("Simpan");
+        buttonSimpan.setStyle("-fx-font-family: 'Times New Roman';-fx-text-fill:black;-fx-font-size: 16px;");
         buttonSimpan.disableProperty().bind(
                 Bindings.isEmpty(fieldNama.textProperty())
                         .or(Bindings.isEmpty(fieldAlamat.textProperty()))
@@ -125,7 +134,7 @@ public class DaftarScene {
         Rectangle kotak = new Rectangle(400, 300);
         kotak.setArcWidth(50);
         kotak.setArcHeight(40);
-        kotak.setFill(Color.rgb(222, 184, 135));
+        kotak.setFill(Color.valueOf("#241b24"));
 
         StackPane stackPane = new StackPane();
         stackPane.getChildren().addAll(kotak, gridPane);
