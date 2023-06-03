@@ -1,6 +1,6 @@
 package centralLibrary.scenes;
 
-import centralLibrary.utils.DatabaseAnggota;
+import centralLibrary.utils.DatabaseConfig;
 import centralLibrary.utils.MenuUtil;
 import javafx.beans.binding.Bindings;
 import javafx.geometry.Insets;
@@ -23,6 +23,10 @@ import javafx.stage.Stage;
 public class DaftarScene {
     private Stage stage;
 
+    public Stage getStage() {
+        return stage;
+    }
+
     public DaftarScene(Stage stage) {
         this.stage = stage;
     }
@@ -42,6 +46,7 @@ public class DaftarScene {
         gridPane.setHgap(10);
 
         Label labelScene = new Label("DAFTAR ANGGOTA BARU");
+        labelScene.setId("label-scene");
         Label labelNama = new Label("Nama Lengkap: ");
         TextField fieldNama = new TextField();
         
@@ -89,11 +94,8 @@ public class DaftarScene {
             String gender = (pria.isSelected() ? "Pria" : "Wanita");
             String kodeAkses = fieldKodeAkses.getText();
 
-            try (DatabaseAnggota databaseAnggota = new DatabaseAnggota("/database/db_anggota.db")) {
-                databaseAnggota.tambahAnggota(nama, tanggalLahir, alamat, telepon, gender, kodeAkses);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            DatabaseConfig.insertData(nama, tanggalLahir, alamat, telepon, gender, kodeAkses);
+
             NotifikasiScene berhasilNotif = new NotifikasiScene(new Stage());
             berhasilNotif.berhasilDaftar();
             fieldNama.clear();
@@ -121,7 +123,9 @@ public class DaftarScene {
         gridPane.setAlignment(Pos.CENTER);
 
         Rectangle kotak = new Rectangle(400, 300);
-        kotak.setFill(Color.rgb(139, 69, 19));
+        kotak.setArcWidth(50);
+        kotak.setArcHeight(40);
+        kotak.setFill(Color.rgb(222, 184, 135));
 
         StackPane stackPane = new StackPane();
         stackPane.getChildren().addAll(kotak, gridPane);

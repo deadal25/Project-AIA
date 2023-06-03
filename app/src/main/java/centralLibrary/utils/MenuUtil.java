@@ -1,6 +1,8 @@
 package centralLibrary.utils;
 
 import centralLibrary.scenes.BerandaScene;
+import centralLibrary.scenes.KatalogScene;
+import centralLibrary.scenes.ListPeminjam;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
@@ -19,15 +21,27 @@ public class MenuUtil{
 
         MenuItem beranda = new MenuItem("Beranda");
         MenuItem katalog = new MenuItem("Katalog");
-        MenuItem bukuDipinjam = new MenuItem("Buku Dipinjam");
-        MenuItem listAnggota = new MenuItem("List Anggota");
+        MenuItem listPinjam = new MenuItem("List Peminjam");
 
-        menu.getItems().addAll(beranda, katalog, bukuDipinjam, listAnggota);
+        menu.getItems().addAll(beranda, katalog, listPinjam);
 
         beranda.setOnAction(action -> {
             Stage stage = (Stage) menuBar.getScene().getWindow();
             BerandaScene berandaScene = new BerandaScene(stage);
             berandaScene.berandaScene();
+        });
+
+        katalog.setOnAction(action -> {
+            Stage stage = (Stage) menuBar.getScene().getWindow();
+            KatalogScene katalogScene = new KatalogScene(stage);
+            katalogScene.katalogScene();
+
+        });
+
+        listPinjam.setOnAction(action -> {
+            Stage stage = (Stage) menuBar.getScene().getWindow();
+            ListPeminjam listPeminjam = new ListPeminjam(stage);
+            listPeminjam.listPeminjamScene();
         });
         
         menuBar.getMenus().addAll(menu);

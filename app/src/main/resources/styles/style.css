@@ -1,7 +1,7 @@
 #central-library{
     -fx-font-family: "Times New Roman";
     -fx-text-fill: white;
-    -fx-font-size:40px;
+    -fx-font-size:100px;
 }
 
 .text{
@@ -13,10 +13,6 @@
     -fx-font-size: 17px;
 }
 
-.menu-bar{
-    -fx-font-size: 2px;
-    -fx-background-color: #422d20;
-}
 
 .text-bar{
     -fx-text-fill: white;
@@ -40,6 +36,35 @@
     -fx-font-size: 17px;
 }
 
+#button-daftar{
+    -fx-background-color: #e4e4e4;
+    -fx-padding:10px;
+    -fx-border-width: 6px; 
+    -fx-background-radius:10px;
+    -fx-text-fill: black;
+}
+
+#kunjungi-koleksi{
+    -fx-background-color:#e4e4e4;
+    -fx-padding:10px;
+    -fx-border-width :6px;
+    -fx-background-radius:10px;
+    -fx-tekt-fill: black;
+}
+
+
+/* (Styling Daftar Scene) */
+#kotak-login{
+    -fx-background-color:blue;
+    -fx-background-radius:50px;
+}
+
+#label-scene{
+    -fx-background-color: #241b24;
+    -fx-text-fill: white;
+    -fx-font-family: "Times New Roman";
+    -fx-font-size: 10px;
+}
 
 
 /* (Styling Katalog) */

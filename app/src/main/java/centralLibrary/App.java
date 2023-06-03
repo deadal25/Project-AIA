@@ -5,6 +5,7 @@ package centralLibrary;
 
 import centralLibrary.scenes.BerandaScene;
 import javafx.application.Application;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class App extends Application {
@@ -26,6 +27,8 @@ public class App extends Application {
     public void start(Stage stage) throws Exception {
         BerandaScene berandaScene =  new BerandaScene(stage);
         stage.setResizable(false);
+        Image logo = new Image("C:\\Users\\LENOVO\\Music\\Project-AIA\\app\\src\\main\\resources\\images\\logoPerpus.png");
+        stage.getIcons().add(logo);
         berandaScene.berandaScene();
     }
 }

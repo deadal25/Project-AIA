@@ -6,12 +6,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class BerandaScene {
@@ -58,9 +56,11 @@ public class BerandaScene {
         Label label1 = new Label("Bergabung bersama kami");
         label1.getStyleClass().add("label-one");
         Button daftar = new Button("Daftar Anggota");
+        daftar.setId("button-daftar");
         Label label2 = new Label("Lihat koleksi kami");
         label2.getStyleClass().add("label-two");
         Button kunjungKatalog = new Button("Kunjungi Koleksi");
+        kunjungKatalog.setId("kunjungi-koleksi");
 
         daftar.setOnAction(action -> {
             DaftarScene pindahDaftarScene = new DaftarScene(stage);
