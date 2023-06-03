@@ -15,7 +15,7 @@ public class DatabaseConfig {
     private static PreparedStatement preparedStatement;
     private static ResultSet resultSet;
 
-    private static final String DB_URL = "jdbc:sqlite:database/db_anggota.db";
+    private static final String DB_URL = "jdbc:sqlite:database/db_central_library.db";
 
     public static void connection() {
         try {
@@ -65,40 +65,53 @@ public class DatabaseConfig {
             e.printStackTrace();
         }
     }
-    public static void insertDataPeminjam(String nama, String kodeAkses) {
+    public static void insertDataPeminjam(String nama, String kodeAkses, int id) {
         connection();
         try {
-            String cariData = "SELECT * FROM anggota WHERE nama_lengkap = ? AND kode_akses = ?";
-            preparedStatement = connect.prepareStatement(cariData);
+            String cariDataAnggota = "SELECT * FROM anggota WHERE nama_lengkap = ? AND kode_akses = ?";
+            String cariDataBuku = "SELECT * FROM book WHERE id = ?";
+            preparedStatement = connect.prepareStatement(cariDataAnggota);
             preparedStatement.setString(1, nama);
             preparedStatement.setString(2, kodeAkses);
-
             resultSet = preparedStatement.executeQuery();
-
+    
             if (resultSet.next()) {
                 String namaLengkap = resultSet.getString("nama_lengkap");
                 String tanggalLahir = resultSet.getString("tanggal_lahir");
                 String alamat = resultSet.getString("alamat");
                 String telepon = resultSet.getString("telepon");
                 String gender = resultSet.getString("gender");
-
-                String tambah = "INSERT INTO anggota_peminjam (nama_lengkap, tanggal_lahir, alamat, telepon, gender) VALUES (?, ?, ?, ?, ?)";
-                preparedStatement = connect.prepareStatement(tambah);
-                preparedStatement.setString(1, namaLengkap);
-                preparedStatement.setString(2, tanggalLahir);
-                preparedStatement.setString(3, alamat);
-                preparedStatement.setString(4, telepon);
-                preparedStatement.setString(5, gender);
-
-                preparedStatement.executeUpdate();
-                resultSet.close();
-                preparedStatement.close();
+    
+                preparedStatement = connect.prepareStatement(cariDataBuku);
+                preparedStatement.setInt(1, id);
+                resultSet = preparedStatement.executeQuery();
+    
+                if (resultSet.next()) {
+                    String judulBuku = resultSet.getString("title");
+                    String jenisBuku = resultSet.getString("type");
+    
+                    // Memasukkan data ke dalam tabel anggota_peminjam
+                    String tambah = "INSERT INTO anggota_peminjam (nama_lengkap, tanggal_lahir, alamat, telepon, gender, judul_buku, jenis_buku) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                    preparedStatement = connect.prepareStatement(tambah);
+                    preparedStatement.setString(1, namaLengkap);
+                    preparedStatement.setString(2, tanggalLahir);
+                    preparedStatement.setString(3, alamat);
+                    preparedStatement.setString(4, telepon);
+                    preparedStatement.setString(5, gender);
+                    preparedStatement.setString(6, judulBuku);
+                    preparedStatement.setString(7, jenisBuku);
+    
+                    preparedStatement.executeUpdate();
+                }
             }
+    
+            resultSet.close();
+            preparedStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
+    
     public static ObservableList<BorrowingMember> getDataPeminjam() {
         ObservableList<BorrowingMember> borrowingMembers = FXCollections.observableArrayList();
         try {
@@ -113,8 +126,10 @@ public class DatabaseConfig {
                 String alamat = resultSet.getString("alamat");
                 String telepon = resultSet.getString("telepon");
                 String gender = resultSet.getString("gender");
+                String judulBuku = resultSet.getString("judul_buku");
+                String jenisBuku = resultSet.getString("jenis_buku");
                 
-                BorrowingMember borrowingMember = new BorrowingMember(id, namaLengkap, tanggalLahir, alamat, telepon, gender);
+                BorrowingMember borrowingMember = new BorrowingMember(id, namaLengkap, tanggalLahir, alamat, telepon, gender, judulBuku, jenisBuku);
                 borrowingMembers.add(borrowingMember);
             }
             resultSet.close();
@@ -124,5 +139,19 @@ public class DatabaseConfig {
             e.printStackTrace();
         }
         return borrowingMembers;
+    }
+
+    public static void deletePeminjam(int id) {
+        connection();
+        try {
+            String deleteData = "DELETE FROM anggota_peminjam WHERE id = ?";
+            preparedStatement = connect.prepareStatement(deleteData);
+            preparedStatement.setInt(1, id);
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+            resultSet.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -42,11 +42,15 @@ public class NotifikasiScene {
         Label labelKodeAkses = new Label("Kode Akses: ");
         TextField fieldKodeAkses = new TextField();
 
+        Label labelNomorBuku = new Label("No. Buku : ");
+        TextField fieldNomorBuku= new TextField();
+
         Button buttonVerifikasi = new Button("Verifikasi");
         buttonVerifikasi.setOnAction(action -> {
             String nama = fieldNama.getText();
             String kodeAkses = fieldKodeAkses.getText();
-            DatabaseConfig.insertDataPeminjam(nama, kodeAkses);
+            int nomorBuku = Integer.parseInt(fieldNomorBuku.getText());
+            DatabaseConfig.insertDataPeminjam(nama, kodeAkses, nomorBuku);
             if (DatabaseConfig.validateMember(nama, kodeAkses)) {
                 Label labelBerhasil = new Label("Anda Berhasil Meminjam Buku");
                 Button okButton = new Button("OKE");
@@ -78,7 +82,8 @@ public class NotifikasiScene {
 
         HBox hBoxNama = new HBox(15, labelNama, fieldNama);
         HBox hBoxKodeAkses = new HBox(15, labelKodeAkses, fieldKodeAkses);
-        VBox vBox = new VBox(15, hBoxNama, hBoxKodeAkses, buttonVerifikasi);
+        HBox hBoxNomorBuku = new HBox(15, labelNomorBuku, fieldNomorBuku);
+        VBox vBox = new VBox(15, hBoxNama, hBoxKodeAkses,hBoxNomorBuku, buttonVerifikasi);
         vBox.setAlignment(Pos.CENTER);
         Scene scene = new Scene(vBox, 400, 400);
         stage.setScene(scene);

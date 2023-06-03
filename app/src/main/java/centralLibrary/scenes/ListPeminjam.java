@@ -5,6 +5,7 @@ import centralLibrary.utils.DatabaseConfig;
 import centralLibrary.utils.MenuUtil;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -43,6 +44,12 @@ public class ListPeminjam {
         TableColumn<BorrowingMember, String> genderColumn = new TableColumn<>("JENIS KELAMIN");
         genderColumn.setCellValueFactory(new PropertyValueFactory<>("gender"));
 
+        TableColumn<BorrowingMember, String> bukuDipinjamColumn = new TableColumn<>("Buku Dipinjam");
+        bukuDipinjamColumn.setCellValueFactory(new PropertyValueFactory<>("judulBuku"));
+
+        TableColumn<BorrowingMember, String> jenisBukuColumn = new TableColumn<>("Jenis Buku");
+        jenisBukuColumn.setCellValueFactory(new PropertyValueFactory<>("jenisBuku"));
+
         TableView<BorrowingMember> table = new TableView<>();
         table.setItems(borrowingMembers);
         table.getColumns().add(idColumn);
@@ -51,6 +58,21 @@ public class ListPeminjam {
         table.getColumns().add(alamatColumn);
         table.getColumns().add(teleponColumn);
         table.getColumns().add(genderColumn);
+        table.getColumns().add(bukuDipinjamColumn);
+        table.getColumns().add(jenisBukuColumn);
+
+        Button pinjamButton = new Button("Kembalikan");
+        pinjamButton.setOnAction(e -> {
+            // Mendapatkan buku yang dipilih dari TableView
+            BorrowingMember selectedData = table.getSelectionModel().getSelectedItem();
+            
+            if (selectedData != null) {
+                int selectedId = selectedData.getId();
+                DatabaseConfig.deletePeminjam(selectedId);
+                borrowingMembers.remove(selectedData);
+                table.refresh();
+            }
+        });
 
 
         VBox vBox = new VBox(15, label, table);
@@ -58,6 +80,7 @@ public class ListPeminjam {
         BorderPane borderPane = new BorderPane();
         borderPane.setTop(MenuUtil.vBoxMenu());
         borderPane.setCenter(vBox);
+        borderPane.setBottom(pinjamButton);
 
         Scene scene = new Scene(borderPane, 900, 700);
         stage.setScene(scene);

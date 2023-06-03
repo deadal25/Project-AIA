@@ -65,5 +65,7 @@ abstract public class Member {
         this.gender = gender;
     }
 
-    abstract public int getJumlahDipinjam();
+    abstract public String getJudulBuku();
+    abstract public String getJenisBuku();
+
 }
