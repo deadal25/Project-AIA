@@ -23,7 +23,7 @@ public class NotifikasiScene {
         Label label1 = new Label("Anda Telah Terdaftar");
         Label label2 = new Label("Selamat Telah Menjadi Anggota Central Library");
 
-        Button closeButton = new Button("SIIIP");
+        Button closeButton = new Button("OKE");
         closeButton.setOnAction(action -> {
             stage.close();
         });
@@ -31,6 +31,7 @@ public class NotifikasiScene {
         VBox vBox = new VBox(10, label1, label2, closeButton);
         Scene scene = new Scene(vBox, 300, 200);
         stage.setScene(scene);
+        stage.setResizable(true);
         stage.show();
     }
 
@@ -48,7 +49,7 @@ public class NotifikasiScene {
             DatabaseConfig.insertDataPeminjam(nama, kodeAkses);
             if (DatabaseConfig.validateMember(nama, kodeAkses)) {
                 Label labelBerhasil = new Label("Anda Berhasil Meminjam Buku");
-                Button okButton = new Button("SIIP");
+                Button okButton = new Button("OKE");
                 okButton.setOnAction(action1 -> {
                     stage.close();
                 });
