@@ -37,7 +37,7 @@ public class MenuUtil{
     public static VBox vBoxMenu() {
         Label labelName = new Label("CENTRAL LIBRARY");
         labelName.setId("central-library");
-        VBox vboxMenu = new VBox(8, labelName, menu());
+        VBox vboxMenu = new VBox(0, labelName, menu());
         vboxMenu.setAlignment(Pos.CENTER);
         return vboxMenu;
     }

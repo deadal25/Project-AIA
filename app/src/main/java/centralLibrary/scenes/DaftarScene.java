@@ -36,7 +36,6 @@ public class DaftarScene {
 
         VBox vBox1 = MenuUtil.vBoxMenu();
 
-        
         GridPane gridPane = new GridPane();
         gridPane.setPadding(new Insets(10));
         gridPane.setVgap(10);
