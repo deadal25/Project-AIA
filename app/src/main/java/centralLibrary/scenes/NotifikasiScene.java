@@ -158,6 +158,9 @@ public class NotifikasiScene {
 
         Scene scene = new Scene(new VBox(pane), 400, 400);
         stage.setScene(scene);
+        stage.setTitle("Central Library");
+        stage.getIcons().add(new Image("images/logoPerpus.png"));
+        stage.setResizable(false);
         stage.show();
     }
 }
