@@ -17,25 +17,26 @@ public class MenuUtil {
     public static VBox vBoxMenu() {
         Button berandaButton = new Button("Beranda");
         berandaButton.setStyle("-fx-background-color: #241b24; -fx-padding:10px;-fx-border-width: 6px; -fx-background-radius:10px;" +
-        "-fx-font-weight: bold; -fx-text-fill: white;-fx-font-family: Times New Roman; -fx-font-size: 14px;");
+        "-fx-font-weight: bold; -fx-text-fill: white;-fx-font-family: Times New Roman; -fx-font-size: 14px; -fx-opacity: 0.6;");
         berandaButton.setOnMouseEntered(action -> berandaButton.setCursor(Cursor.HAND));
         
         Button koleksiButton = new Button("Koleksi");
         koleksiButton.setStyle("-fx-background-color: #241b24; -fx-padding:10px; -fx-border-width: 6px; -fx-background-radius:10px;" +
-        "-fx-font-weight: bold; -fx-text-fill: white;-fx-font-family: Times New Roman; -fx-font-size: 14px;");
+        "-fx-font-weight: bold; -fx-text-fill: white;-fx-font-family: Times New Roman; -fx-font-size: 14px; -fx-opacity: 0.6;");
         koleksiButton.setOnMouseEntered(action -> koleksiButton.setCursor(Cursor.HAND));
         
         Button listPeminjamButton = new Button("List Peminjam");
         listPeminjamButton.setStyle("-fx-background-color: #241b24; -fx-padding:10px; -fx-border-width: 6px; -fx-background-radius:10px;" +
-        "-fx-font-weight: bold; -fx-text-fill: white; -fx-font-family: Times New Roman; -fx-font-size: 14px;");
+        "-fx-font-weight: bold; -fx-text-fill: white; -fx-font-family: Times New Roman; -fx-font-size: 14px; -fx-opacity: 0.6;");
         listPeminjamButton.setOnMouseEntered(action -> listPeminjamButton.setCursor(Cursor.HAND));
         
         Button daftarAnggotaButton = new Button("Daftar Anggota");
         daftarAnggotaButton.setStyle("-fx-background-color: #241b24; -fx-padding:10px; -fx-border-width: 6px; -fx-background-radius:10px;" +
-        "-fx-font-weight: bold; -fx-text-fill: white; -fx-font-family: Times New Roman; -fx-font-size: 14px;");
+        "-fx-font-weight: bold; -fx-text-fill: white; -fx-font-family: Times New Roman; -fx-font-size: 14px; -fx-opacity: 0.6;");
         daftarAnggotaButton.setOnMouseEntered(action -> daftarAnggotaButton.setCursor(Cursor.HAND));
         
         HBox hBox = new HBox(0, berandaButton, koleksiButton, daftarAnggotaButton, listPeminjamButton);
+        hBox.setStyle("-fx-background-color: #37100c;");
 
         berandaButton.setOnAction(action -> {
             Stage stage = (Stage) hBox.getScene().getWindow();
