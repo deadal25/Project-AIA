@@ -43,6 +43,18 @@ public class DatabaseConfig {
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
+        } finally {
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                } if (preparedStatement != null) {
+                    preparedStatement.close();
+                } if (connect != null) {
+                    connect.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();               
+            }
         }
     }
 
@@ -61,10 +73,12 @@ public class DatabaseConfig {
             preparedStatement.executeUpdate();
 
             preparedStatement.close();
+            connect.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
     public static void insertDataPeminjam(String nama, String kodeAkses, int id) {
         connection();
         try {
@@ -90,7 +104,6 @@ public class DatabaseConfig {
                     String judulBuku = resultSet.getString("title");
                     String jenisBuku = resultSet.getString("type");
     
-                    // Memasukkan data ke dalam tabel anggota_peminjam
                     String tambah = "INSERT INTO anggota_peminjam (nama_lengkap, tanggal_lahir, alamat, telepon, gender, judul_buku, jenis_buku) VALUES (?, ?, ?, ?, ?, ?, ?)";
                     preparedStatement = connect.prepareStatement(tambah);
                     preparedStatement.setString(1, namaLengkap);
@@ -107,6 +120,7 @@ public class DatabaseConfig {
     
             resultSet.close();
             preparedStatement.close();
+            connect.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -149,7 +163,7 @@ public class DatabaseConfig {
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
             preparedStatement.close();
-            resultSet.close();
+            connect.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

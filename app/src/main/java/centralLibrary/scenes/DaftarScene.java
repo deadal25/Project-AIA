@@ -5,10 +5,12 @@ import centralLibrary.utils.MenuUtil;
 import javafx.beans.binding.Bindings;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -36,8 +38,6 @@ public class DaftarScene {
         ImageView background = new ImageView("/images/bownCloud.jpg");
         background.setPreserveRatio(true);
         background.setFitHeight(1080);
-
-        VBox vBox1 = MenuUtil.vBoxMenu();
 
         GridPane gridPane = new GridPane();
         gridPane.setPadding(new Insets(10));
@@ -83,10 +83,12 @@ public class DaftarScene {
 
         Label labelKodeAkses = new Label("Kode Akses : ");
         labelKodeAkses.setStyle("-fx-padding: 3px 25px;-fx-font-family: 'Times New Roman';-fx-text-fill:WHITE;-fx-font-size: 16px; ");
-        TextField fieldKodeAkses = new TextField();
+        PasswordField fieldKodeAkses = new PasswordField();
         
         Button buttonSimpan = new Button("Simpan");
         buttonSimpan.setStyle("-fx-font-family: 'Times New Roman';-fx-text-fill:black;-fx-font-size: 16px;");
+        buttonSimpan.setOnMouseEntered(action -> buttonSimpan.setCursor(Cursor.HAND));
+
         buttonSimpan.disableProperty().bind(
                 Bindings.isEmpty(fieldNama.textProperty())
                         .or(Bindings.isEmpty(fieldAlamat.textProperty()))
@@ -139,14 +141,16 @@ public class DaftarScene {
         StackPane stackPane = new StackPane();
         stackPane.getChildren().addAll(kotak, gridPane);
         VBox vBox2 = new VBox(15, labelScene, stackPane);
-        vBox2.setPadding(new Insets(20, 0, 0, 0));
+        vBox2.setAlignment(Pos.BASELINE_CENTER);
+        vBox2.setPadding(new Insets(40, 0, 0, 0));
         BorderPane root = new BorderPane();
-        root.setTop(vBox1);
+        root.setTop(MenuUtil.vBoxMenu());
         root.setCenter(vBox2);
 
         StackPane pane = new StackPane();
         pane.getChildren().addAll(background, root);
         Scene scene = new Scene(pane, 900, 700);
+        scene.getStylesheets().add(getClass().getResource("/styles/style.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }

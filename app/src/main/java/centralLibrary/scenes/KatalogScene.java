@@ -1,12 +1,15 @@
 package centralLibrary.scenes;
 
+import centralLibrary.utils.MenuUtil;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;  
 import javafx.stage.Stage;
@@ -167,6 +170,7 @@ public class KatalogScene {
         vbox5.setAlignment(Pos.CENTER);
 
         Button pinjamButton = new Button("PINJAM");
+        pinjamButton.setOnMouseEntered(action -> pinjamButton.setCursor(Cursor.HAND));
         pinjamButton.setStyle("-fx-padding: 3px 25px;-fx-font-family: 'Times New Roman';-fx-text-fill:WHITE;-fx-font-size: 15px;-fx-background-color: #241b24; -fx-border-color: #FAEBD7; -fx-border-width: 2px; -fx-border-radius: 3;");
         pinjamButton.setOnAction(action -> {
             NotifikasiScene notofikasiPinjam = new NotifikasiScene(new Stage());
@@ -175,14 +179,16 @@ public class KatalogScene {
 
         Button exitButton = new Button("EXIT");
         exitButton.setStyle("-fx-padding: 3px 25px;-fx-font-family: 'Times New Roman';-fx-text-fill:WHITE;-fx-font-size: 15px;-fx-background-color: #241b24; -fx-border-color: #FAEBD7; -fx-border-width: 2px; -fx-border-radius: 3;");
-        HBox hBoxButton = new HBox(30, exitButton, pinjamButton);
-        hBoxButton.setAlignment(Pos.BOTTOM_CENTER);
-        VBox.setMargin(exitButton, new Insets(0, 10, 0, 0));
-        
+        exitButton.setOnMouseEntered(action -> exitButton.setCursor(Cursor.HAND));
         exitButton.setOnAction(action -> {
             BerandaScene pindahBerandaScene = new BerandaScene(stage);
             pindahBerandaScene.berandaScene();
         });
+
+        HBox hBoxButton = new HBox(30, exitButton, pinjamButton);
+        hBoxButton.setAlignment(Pos.BOTTOM_CENTER);
+        VBox.setMargin(exitButton, new Insets(0, 10, 0, 0));
+        
         
         HBox hbox1 = new HBox(15, vbox1,vbox2,vbox6,vbox23,vbox28);
         hbox1.setAlignment(Pos.CENTER);
@@ -191,9 +197,13 @@ public class KatalogScene {
         hbox2.setAlignment(Pos.CENTER);
         
         VBox utama = new VBox(10, vboxjudul,hbox1,vboxnovel,hbox2,hBoxButton);
+        BorderPane borderPane = new BorderPane();
+        borderPane.setTop(MenuUtil.vBoxMenu());
+        borderPane.setBottom(utama);
+        borderPane.setPadding(new Insets(0, 0, 30, 0));
 
         StackPane pane = new StackPane();
-        pane.getChildren().addAll(background, utama);
+        pane.getChildren().addAll(background, borderPane);
         Scene perpustakaan = new Scene(pane, 900, 700);
 
         perpustakaan.getStylesheets().add(getClass().getResource("/styles/style.css").toExternalForm());

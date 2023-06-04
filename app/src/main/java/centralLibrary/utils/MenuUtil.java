@@ -1,60 +1,70 @@
 package centralLibrary.utils;
 
 import centralLibrary.scenes.BerandaScene;
+import centralLibrary.scenes.DaftarScene;
 import centralLibrary.scenes.KatalogScene;
 import centralLibrary.scenes.ListPeminjam;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class MenuUtil{
+public class MenuUtil {
 
+    public static VBox vBoxMenu() {
+        Button berandaButton = new Button("Beranda");
+        berandaButton.setStyle("-fx-background-color: #241b24; -fx-padding:10px;-fx-border-width: 6px; -fx-background-radius:10px;" +
+        "-fx-font-weight: bold; -fx-text-fill: white;-fx-font-family: Times New Roman; -fx-font-size: 14px;");
+        berandaButton.setOnMouseEntered(action -> berandaButton.setCursor(Cursor.HAND));
+        
+        Button koleksiButton = new Button("Koleksi");
+        koleksiButton.setStyle("-fx-background-color: #241b24; -fx-padding:10px; -fx-border-width: 6px; -fx-background-radius:10px;" +
+        "-fx-font-weight: bold; -fx-text-fill: white;-fx-font-family: Times New Roman; -fx-font-size: 14px;");
+        koleksiButton.setOnMouseEntered(action -> koleksiButton.setCursor(Cursor.HAND));
+        
+        Button listPeminjamButton = new Button("List Peminjam");
+        listPeminjamButton.setStyle("-fx-background-color: #241b24; -fx-padding:10px; -fx-border-width: 6px; -fx-background-radius:10px;" +
+        "-fx-font-weight: bold; -fx-text-fill: white; -fx-font-family: Times New Roman; -fx-font-size: 14px;");
+        listPeminjamButton.setOnMouseEntered(action -> listPeminjamButton.setCursor(Cursor.HAND));
+        
+        Button daftarAnggotaButton = new Button("Daftar Anggota");
+        daftarAnggotaButton.setStyle("-fx-background-color: #241b24; -fx-padding:10px; -fx-border-width: 6px; -fx-background-radius:10px;" +
+        "-fx-font-weight: bold; -fx-text-fill: white; -fx-font-family: Times New Roman; -fx-font-size: 14px;");
+        daftarAnggotaButton.setOnMouseEntered(action -> daftarAnggotaButton.setCursor(Cursor.HAND));
+        
+        HBox hBox = new HBox(0, berandaButton, koleksiButton, daftarAnggotaButton, listPeminjamButton);
 
-    public static MenuBar menu() {
-        MenuBar menuBar = new MenuBar();
-        menuBar.setId("menu-bar");
-
-        Menu menu = new Menu("Menu");
-
-        MenuItem beranda = new MenuItem("Beranda");
-        MenuItem katalog = new MenuItem("Katalog");
-        MenuItem listPinjam = new MenuItem("List Peminjam");
-
-        menu.getItems().addAll(beranda, katalog, listPinjam);
-
-        beranda.setOnAction(action -> {
-            Stage stage = (Stage) menuBar.getScene().getWindow();
+        berandaButton.setOnAction(action -> {
+            Stage stage = (Stage) hBox.getScene().getWindow();
             BerandaScene berandaScene = new BerandaScene(stage);
             berandaScene.berandaScene();
         });
-
-        katalog.setOnAction(action -> {
-            Stage stage = (Stage) menuBar.getScene().getWindow();
+        koleksiButton.setOnAction(action -> {
+            Stage stage = (Stage) hBox.getScene().getWindow();
             KatalogScene katalogScene = new KatalogScene(stage);
             katalogScene.katalogScene();
-
         });
-
-        listPinjam.setOnAction(action -> {
-            Stage stage = (Stage) menuBar.getScene().getWindow();
+        daftarAnggotaButton.setOnAction(action -> {
+            Stage stage = (Stage) hBox.getScene().getWindow();
+            DaftarScene daftarScene = new DaftarScene(stage);
+            daftarScene.daftarScene();
+        });
+        listPeminjamButton.setOnAction(action -> {
+            Stage stage = (Stage) hBox.getScene().getWindow();
             ListPeminjam listPeminjam = new ListPeminjam(stage);
             listPeminjam.listPeminjamScene();
         });
-        
-        menuBar.getMenus().addAll(menu);
-        return menuBar;
-    }
 
-    public static VBox vBoxMenu() {
         Label labelName = new Label("CENTRAL LIBRARY");
         labelName.setId("central-library");
-        VBox vboxMenu = new VBox(0, labelName, menu());
-        vboxMenu.setAlignment(Pos.CENTER);
-        return vboxMenu;
+        labelName.setStyle("-fx-font-family: Times New Roman; -fx-text-fill: white; -fx-font-size:17px; -fx-font-weight: bold;");
+
+        VBox vBoxLabelName = new VBox(labelName);
+        vBoxLabelName.setAlignment(Pos.BASELINE_CENTER);
+        VBox vBoxMenu = new VBox(hBox, vBoxLabelName);
+        return vBoxMenu;
     }
 }

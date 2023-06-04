@@ -2,6 +2,7 @@
     -fx-font-family: "Times New Roman";
     -fx-text-fill: white;
     -fx-font-size:100px;
+    -fx-font-weight: bold;
 }
 
 .text{

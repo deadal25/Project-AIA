@@ -29,6 +29,7 @@ public class App extends Application {
         stage.setResizable(false);
         Image logo = new Image("images/logoPerpus.png");
         stage.getIcons().add(logo);
+        stage.setTitle("Central Library");
         berandaScene.berandaScene();
     }
 }

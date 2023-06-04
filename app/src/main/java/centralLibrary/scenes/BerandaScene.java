@@ -1,7 +1,9 @@
 package centralLibrary.scenes;
 
 import centralLibrary.utils.MenuUtil;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -29,14 +31,6 @@ public class BerandaScene {
         imageView.setPreserveRatio(true);
         imageView.setFitHeight(160);
 
-        Label text1 = new Label();
-        text1.setText ("Central  Library  adalah tempat  yang  nyaman untuk  mengeksplorasi dunia  literasi.\n" + 
-                        "Kami menjadi  rumah bagi  para pecinta buku dan penggemar literasi. Di Central\n" + 
-                        "Library, kami berkomitmen untuk menciptakan  lingkungan yang ramah  dan inspiratif\n" + 
-                        "bagi semua orang yang ingin menjelajahi dunia pengetahuan melalui bahan bacaan yang\n" + 
-                        "berkualitas.");
-        text1.getStyleClass().add("text");
-
         Label text2 = new Label("Lokasi: Jl. Imajinasi No.01, Kota Bayangan, Negara Cahaya.");
         text2.getStyleClass().add("text");
 
@@ -57,10 +51,14 @@ public class BerandaScene {
         label1.getStyleClass().add("label-one");
         Button daftar = new Button("Daftar Anggota");
         daftar.setId("button-daftar");
+        daftar.setOnMouseEntered(action -> daftar.setCursor(Cursor.HAND));
+
         Label label2 = new Label("Lihat koleksi kami");
         label2.getStyleClass().add("label-two");
         Button kunjungKatalog = new Button("Kunjungi Koleksi");
         kunjungKatalog.setId("kunjungi-koleksi");
+        kunjungKatalog.setOnMouseEntered(action -> kunjungKatalog.setCursor(Cursor.HAND));
+
 
         daftar.setOnAction(action -> {
             DaftarScene pindahDaftarScene = new DaftarScene(stage);
@@ -81,6 +79,7 @@ public class BerandaScene {
         hbox.setAlignment(Pos.CENTER);
 
         VBox vboxProfil = new VBox(15, imageView, text2, text3, text4, hbox);
+        vboxProfil.setPadding(new Insets(20, 0, 0, 0));
         vboxProfil.setAlignment(Pos.TOP_CENTER);
 
         BorderPane borderPane = new BorderPane();
